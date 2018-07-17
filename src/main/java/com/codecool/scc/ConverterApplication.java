@@ -1,5 +1,7 @@
 package com.codecool.scc;
 
+import java.io.File;
+
 public class ConverterApplication {
 
     public static void main(String[] args) {
@@ -12,12 +14,14 @@ public class ConverterApplication {
     }
 
     private static void handleInputArguments(String[] args) {
+
+        File file;
+        OutputFormat outputFormat = null;
+
         if (args.length == 1) {
-            String filePath = args[0];
-            // Check if path is correct and start
+            file = new File(args[0]);
         } else if (args.length == 2) {
 
-            OutputFormat outputFormat = null;
             for (OutputFormat format : OutputFormat.values()) {
                 if (format.toString().equals(args[0].toUpperCase())) {
                     outputFormat = format;
@@ -28,12 +32,26 @@ public class ConverterApplication {
                 System.out.println("Invalid format");
                 return;
             }
-
-            String filePath = args[1];
-            // Check if path is correct and start
-
+            file = new File(args[1]);
         } else {
             System.out.println("Invalid arguments");
+            return;
+        }
+        handleConversion(file, outputFormat);
+    }
+
+    private static void handleConversion(File file, OutputFormat outputFormat) {
+
+        SimpleCsvConverter simpleCsvConverter = new SimpleCsvConverter();
+
+        if (file.exists()) {
+            if (outputFormat != null) {
+                simpleCsvConverter.convert(file, outputFormat);
+            } else {
+                simpleCsvConverter.convert(file);
+            }
+        } else {
+            System.out.println("Invalid file");
         }
     }
 }
