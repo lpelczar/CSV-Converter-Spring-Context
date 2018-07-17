@@ -4,7 +4,7 @@ import com.codecool.scc.OutputFormat;
 
 public class OutputFormatterFactory {
 
-    OutputFormatter createByFormat(OutputFormat outputFormat) {
+    public OutputFormatter createByFormat(OutputFormat outputFormat) {
         switch (outputFormat) {
             case XML:
                 return new XmlOutputFormatter();
