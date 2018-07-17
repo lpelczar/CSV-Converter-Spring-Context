@@ -42,7 +42,8 @@ public class ConverterApplication {
 
     private static void handleConversion(File file, OutputFormat outputFormat) {
 
-        SimpleCsvConverter simpleCsvConverter = new SimpleCsvConverter();
+        FileReader fileReader = new FileReader();
+        SimpleCsvConverter simpleCsvConverter = new SimpleCsvConverter(fileReader);
 
         if (file.exists()) {
             if (outputFormat != null) {
