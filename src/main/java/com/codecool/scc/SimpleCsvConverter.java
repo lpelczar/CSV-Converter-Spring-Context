@@ -1,14 +1,21 @@
 package com.codecool.scc;
 
 import java.io.File;
+import java.util.List;
 
-public class SimpleCsvConverter {
+class SimpleCsvConverter {
+
+    private FileReader fileReader = new FileReader();
 
     void convert(File file, OutputFormat outputFormat) {
+
+        List<String[]> data = fileReader.readData(file);
+        System.out.println(data);
+
         System.out.println("I convert CSV to output format");
     }
 
     void convert(File file) {
-        System.out.println("I convert CSV to table format");
+        convert(file, OutputFormat.TABLE);
     }
 }
