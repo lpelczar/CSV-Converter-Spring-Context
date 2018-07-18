@@ -1,5 +1,7 @@
 package com.codecool.scc;
 
+import com.codecool.scc.output.OutputFormatterFactory;
+
 import java.io.File;
 
 public class ConverterApplication {
@@ -42,8 +44,9 @@ public class ConverterApplication {
 
     private static void handleConversion(File file, OutputFormat outputFormat) {
 
-        FileReader fileReader = new FileReader();
-        SimpleCsvConverter simpleCsvConverter = new SimpleCsvConverter(fileReader);
+        CsvFileReader csvFileReader = new CsvFileReader();
+        OutputFormatterFactory outputFormatterFactory = new OutputFormatterFactory();
+        SimpleCsvConverter simpleCsvConverter = new SimpleCsvConverter(csvFileReader, outputFormatterFactory);
 
         if (file.exists()) {
             if (outputFormat != null) {

@@ -8,17 +8,17 @@ import java.util.List;
 
 class SimpleCsvConverter {
 
-    private FileReader fileReader;
+    private CsvFileReader csvFileReader;
     private OutputFormatterFactory outputFormatterFactory;
 
-    SimpleCsvConverter(FileReader fileReader, OutputFormatterFactory outputFormatterFactory) {
-        this.fileReader = fileReader;
+    SimpleCsvConverter(CsvFileReader csvFileReader, OutputFormatterFactory outputFormatterFactory) {
+        this.csvFileReader = csvFileReader;
         this.outputFormatterFactory = outputFormatterFactory;
     }
 
     void convert(File file, OutputFormat outputFormat) {
 
-        List<String[]> data = fileReader.readData(file);
+        List<String[]> data = csvFileReader.readData(file);
         OutputFormatter outputFormatter = outputFormatterFactory.createByFormat(outputFormat);
         outputFormatter.printToConsole(data);
     }
