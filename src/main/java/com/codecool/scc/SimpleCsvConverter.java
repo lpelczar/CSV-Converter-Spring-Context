@@ -5,6 +5,7 @@ import com.codecool.scc.output.OutputFormatterFactory;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 class SimpleCsvConverter {
 
@@ -18,7 +19,7 @@ class SimpleCsvConverter {
 
     void convert(File file, OutputFormat outputFormat) {
 
-        List<String[]> data = csvFileReader.readData(file);
+        List<Map<?, ?>> data = csvFileReader.readData(file);
         OutputFormatter outputFormatter = outputFormatterFactory.createByFormat(outputFormat);
         outputFormatter.printToConsole(data);
     }
