@@ -3,6 +3,7 @@ package com.codecool.scc;
 import com.codecool.scc.output.OutputFormatterFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.File;
@@ -47,8 +48,8 @@ public class ConverterApplication {
 
     private static void handleConversion(File file, OutputFormat outputFormat) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/beans.xml");
-        SimpleCsvConverter simpleCsvConverter = (SimpleCsvConverter) context.getBean("simpleCsvConverter");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        SimpleCsvConverter simpleCsvConverter = (SimpleCsvConverter) ctx.getBean("simpleCsvConverter");
 
         if (file.exists()) {
             if (outputFormat != null) {
