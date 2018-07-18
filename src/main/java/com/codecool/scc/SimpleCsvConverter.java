@@ -12,8 +12,13 @@ class SimpleCsvConverter {
     private CsvFileReader csvFileReader;
     private OutputFormatterFactory outputFormatterFactory;
 
-    SimpleCsvConverter(CsvFileReader csvFileReader, OutputFormatterFactory outputFormatterFactory) {
+    SimpleCsvConverter() {}
+
+    public void setCsvFileReader(CsvFileReader csvFileReader) {
         this.csvFileReader = csvFileReader;
+    }
+
+    public void setOutputFormatterFactory(OutputFormatterFactory outputFormatterFactory) {
         this.outputFormatterFactory = outputFormatterFactory;
     }
 

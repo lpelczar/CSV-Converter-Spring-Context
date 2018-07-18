@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="csvFileReader" class="com.codecool.scc.CsvFileReader" />
+    <bean id="outputFormatterFactory" class="com.codecool.scc.output.OutputFormatterFactory" />
+
+    <bean id="simpleCsvConverter" class="com.codecool.scc.SimpleCsvConverter">
+        <property name="csvFileReader" ref="csvFileReader" />
+        <property name="outputFormatterFactory" ref="outputFormatterFactory" />
+    </bean>
+
+</beans>
